@@ -1,1 +1,1 @@
-# fake_crypto_searcher
+# Fake crypto searcher
