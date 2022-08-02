@@ -58,7 +58,6 @@ def on_startup():
         result = True
     else:
         result = False
-    result = True
     animation('Обработка данных ', 5)
     if result:
         print('Начинаем работу...')
@@ -94,11 +93,11 @@ def generate_phrase(list_: list) -> str:
             0.2])
         time.sleep(latency)
     all_checks += 1
-    if sys.platform == "win32":
+    title = f'С балансом: {with_balance} - Всего проверок: {all_checks} - [Нашли {founded}$]'
+    if sys.platform == 'win32':
         os.system("title " + title)
     with open('data', 'wb') as f:
         pickle.dump(all_checks, f)
-    print(all_checks)
     return phrase
 
 def main():
@@ -134,4 +133,8 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print(animation(Fore.WHITE + 'Сохранение прогресса', 1))
+        try:
+            print(animation(Fore.WHITE + 'Сохранение прогресса', 1))
+        except KeyboardInterrupt:
+            sys.exit()
+            
